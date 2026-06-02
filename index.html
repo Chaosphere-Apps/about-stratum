@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Stratum is a self-hosted system design workspace that connects architecture diagrams, journeys, docs, reviews, and analysis for enterprise teams."
+    />
+    <meta name="theme-color" content="#0a1020" />
+    <title>Stratum | System design workspace</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-reveal>
+        <a class="brand" href="#top" aria-label="Stratum home">
+          <span class="brand-mark">S</span>
+          <span>
+            <strong>Stratum</strong>
+            <small>System design workspace</small>
+          </span>
+        </a>
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a href="#problem">Problem</a>
+          <a href="#product">Product</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#self-hosted">Self-hosted</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero-section">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">Architecture clarity for serious teams</p>
+            <h1>Keep system design, journeys, docs, reviews, and analysis in one living workspace.</h1>
+            <p class="hero-lede">
+              Stratum turns architecture design from a static drawing into a reviewable, versioned, and evaluatable
+              system model. It is built for teams that need engineering context to survive beyond meetings.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#self-hosted">Explore self-hosting</a>
+              <a class="secondary-button" href="#product">See what it solves</a>
+            </div>
+            <div class="trust-strip" aria-label="Product principles">
+              <span>Design first</span>
+              <span>Journey aware</span>
+              <span>Docs included</span>
+              <span>Review ready</span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Stratum workspace preview" data-reveal>
+            <div class="product-frame">
+              <div class="frame-toolbar">
+                <span class="frame-dot"></span>
+                <span class="frame-dot"></span>
+                <span class="frame-dot"></span>
+                <strong>Payments workspace</strong>
+              </div>
+              <div class="workspace-preview">
+                <aside class="preview-palette">
+                  <span class="palette-pill active">Design</span>
+                  <span class="palette-pill">Journey</span>
+                  <span class="palette-pill">Docs</span>
+                  <span class="palette-pill">Review</span>
+                </aside>
+                <div class="preview-canvas">
+                  <span class="cloud-label">Secure Cloud</span>
+                  <div class="node node-client">
+                    <span></span>
+                    <strong>Web Client</strong>
+                    <small>client.web</small>
+                  </div>
+                  <div class="node node-api">
+                    <span></span>
+                    <strong>API Gateway</strong>
+                    <small>edge.gateway</small>
+                  </div>
+                  <div class="node node-service">
+                    <span></span>
+                    <strong>Purchase Service</strong>
+                    <small>compute.service</small>
+                  </div>
+                  <div class="node node-queue">
+                    <span></span>
+                    <strong>Queue</strong>
+                    <small>messaging.queue</small>
+                  </div>
+                  <div class="node node-db">
+                    <span></span>
+                    <strong>Ledger DB</strong>
+                    <small>data.sql</small>
+                  </div>
+                  <svg class="flow-lines" viewBox="0 0 760 420" aria-hidden="true">
+                    <path d="M120 128 C210 128 230 128 315 128" />
+                    <path d="M410 147 C470 190 470 250 540 274" />
+                    <path d="M410 120 C520 82 560 76 645 88" />
+                    <path d="M555 292 C515 340 435 352 355 338" />
+                  </svg>
+                  <div class="analysis-card">
+                    <span>Analysis score</span>
+                    <strong>82</strong>
+                    <small>3 risks to review</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="problem" class="problem-section section-band">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">The problem</p>
+            <h2>Architecture knowledge is too fragmented to trust at scale.</h2>
+            <p>
+              Enterprise systems are rarely understood from one artifact. Design diagrams live in one place, journeys
+              in another, requirements in documents, reviews in chat, and decisions in memory.
+            </p>
+          </div>
+          <div class="problem-grid">
+            <article data-reveal>
+              <span class="card-index">01</span>
+              <h3>Diagrams lose intent</h3>
+              <p>A box and arrow can show a dependency, but it does not explain traffic, consistency needs, failure strategy, or why the dependency exists.</p>
+            </article>
+            <article data-reveal>
+              <span class="card-index">02</span>
+              <h3>Reviews lack structure</h3>
+              <p>Architecture feedback often happens without version state, assigned reviewers, or a clear record of what was approved.</p>
+            </article>
+            <article data-reveal>
+              <span class="card-index">03</span>
+              <h3>Analysis starts too late</h3>
+              <p>Traffic assumptions, availability targets, data behavior, and security checks should be attached to the design from the start.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="product" class="product-section">
+          <div class="section-heading narrow" data-reveal>
+            <p class="eyebrow">The Stratum approach</p>
+            <h2>One workspace for the system, not just the drawing.</h2>
+          </div>
+          <div class="feature-stack">
+            <article class="feature-row" data-reveal>
+              <div>
+                <span class="feature-tag">Design</span>
+                <h3>Structured architecture canvas</h3>
+              </div>
+              <p>
+                Create components, cloud boundaries, shared catalog references, and typed connections that remain
+                readable to humans and machines.
+              </p>
+            </article>
+            <article class="feature-row" data-reveal>
+              <div>
+                <span class="feature-tag">Journeys</span>
+                <h3>Explain how requests move</h3>
+              </div>
+              <p>
+                Map synchronous calls, async flows, callbacks, and review paths so stakeholders can traverse a design
+                without needing a live walkthrough every time.
+              </p>
+            </article>
+            <article class="feature-row" data-reveal>
+              <div>
+                <span class="feature-tag">Docs</span>
+                <h3>Keep decisions beside the model</h3>
+              </div>
+              <p>
+                Attach documentation, notes, requirements, and review context to the same design surface instead of
+                sending readers across disconnected tools.
+              </p>
+            </article>
+            <article class="feature-row" data-reveal>
+              <div>
+                <span class="feature-tag">Analysis</span>
+                <h3>Combine deterministic checks with AI review</h3>
+              </div>
+              <p>
+                Use structured inputs for traffic, consistency, availability, risk, and security analysis, then layer AI
+                synthesis on top when configured by the enterprise.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="difference-section section-band">
+          <div class="difference-card" data-reveal>
+            <p class="eyebrow">Why it is different</p>
+            <h2>Stratum treats architecture as an operating model.</h2>
+            <p>
+              The goal is not to create another pretty diagram. The goal is to make a design usable for review,
+              onboarding, impact analysis, and future evaluation. Stratum keeps the core system model structured while
+              still giving teams a calm, visual workspace.
+            </p>
+            <div class="difference-list">
+              <span>Shared enterprise catalog</span>
+              <span>Manual version lifecycle</span>
+              <span>Review and comment history</span>
+              <span>Self-hosted deployment path</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="enterprise" class="enterprise-section">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Enterprise ready direction</p>
+            <h2>Built for controlled environments.</h2>
+            <p>
+              Stratum is designed around the realities of internal platforms: access boundaries, central configuration,
+              private deployment, and the need to keep sensitive architecture context inside the organization.
+            </p>
+          </div>
+          <div class="enterprise-grid">
+            <article data-reveal>
+              <h3>Admin console</h3>
+              <p>Manage users, sign-in options, AI provider settings, storage mode, integrations, and catalog governance from one command surface.</p>
+            </article>
+            <article data-reveal>
+              <h3>Access control</h3>
+              <p>Plan workspace and design-level access with roles, groups, review permissions, and future SSO group mapping.</p>
+            </article>
+            <article data-reveal>
+              <h3>Version governance</h3>
+              <p>Move versions through draft, ready for review, reviewed, and live states with explicit reviewer participation.</p>
+            </article>
+            <article data-reveal>
+              <h3>Private analysis</h3>
+              <p>Configure AI centrally when needed, while keeping deterministic analysis available as a baseline.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="self-hosted" class="release-section section-band">
+          <div class="release-copy" data-reveal>
+            <p class="eyebrow">Distribution model</p>
+            <h2>Free to host. Private by design.</h2>
+            <p>
+              Stratum is planned as a self-hosted product. The source code is not planned for public release, but teams
+              can run published Docker images or binaries in their own infrastructure.
+            </p>
+          </div>
+          <div class="release-panel" data-reveal>
+            <div class="terminal-window">
+              <div class="terminal-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <code>
+                docker run -p 8080:8080 chaosphere/stratum<br />
+                stratum --storage postgres --self-hosted<br />
+                open http://localhost:8080
+              </code>
+            </div>
+            <p>
+              Packaging details are subject to release planning. The intent is simple deployment, private data ownership,
+              and enterprise-controlled configuration.
+            </p>
+          </div>
+        </section>
+
+        <section id="github" class="github-section">
+          <div class="feedback-card" data-reveal>
+            <p class="eyebrow">Public feedback path</p>
+            <h2>Feedback will be collected through GitHub.</h2>
+            <p>
+              When this microsite is split into its own public repository, product feedback, setup questions, review
+              notes, and deployment requests will be tracked through GitHub Issues and Discussions. Until then, this
+              page is the public product narrative and setup guide surface for Stratum.
+            </p>
+            <a class="primary-button" href="#self-hosted">Review setup model</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Stratum</strong>
+          <span>System design workspace for enterprise teams.</span>
+        </div>
+        <p class="watermark">Product belongs to Chaosphere Labs.</p>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
