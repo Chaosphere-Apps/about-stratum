@@ -22,6 +22,7 @@
           </span>
         </a>
         <nav class="top-nav" aria-label="Primary navigation">
+          <a href="#preview">Preview</a>
           <a href="#problem">Problem</a>
           <a href="#product">Product</a>
           <a href="#enterprise">Enterprise</a>
@@ -56,56 +57,148 @@
                 <span class="frame-dot"></span>
                 <span class="frame-dot"></span>
                 <span class="frame-dot"></span>
-                <strong>Payments workspace</strong>
+                <strong>Architecture workspace</strong>
               </div>
-              <div class="workspace-preview">
-                <aside class="preview-palette">
-                  <span class="palette-pill active">Design</span>
-                  <span class="palette-pill">Journey</span>
-                  <span class="palette-pill">Docs</span>
-                  <span class="palette-pill">Review</span>
+              <div class="hero-workspace-board">
+                <aside class="hero-board-nav" aria-label="Workspace modules">
+                  <span class="active">Design</span>
+                  <span>Requirements</span>
+                  <span>Journey</span>
+                  <span>Docs</span>
+                  <span>Review</span>
                 </aside>
-                <div class="preview-canvas">
-                  <span class="cloud-label">Secure Cloud</span>
-                  <div class="node node-client">
+                <div class="hero-board-canvas">
+                  <div class="canvas-heading">
+                    <span>Notification Platform</span>
+                    <strong>v8 Draft</strong>
+                  </div>
+                  <div class="mini-node mini-node-client">
                     <span></span>
                     <strong>Web Client</strong>
                     <small>client.web</small>
                   </div>
-                  <div class="node node-api">
+                  <div class="mini-node mini-node-api">
                     <span></span>
                     <strong>API Gateway</strong>
-                    <small>edge.gateway</small>
+                    <small>edge.api</small>
                   </div>
-                  <div class="node node-service">
+                  <div class="mini-node mini-node-service">
                     <span></span>
-                    <strong>Purchase Service</strong>
+                    <strong>Orchestrator</strong>
                     <small>compute.service</small>
                   </div>
-                  <div class="node node-queue">
+                  <div class="mini-node mini-node-queue">
                     <span></span>
-                    <strong>Queue</strong>
+                    <strong>Fanout Queue</strong>
                     <small>messaging.queue</small>
                   </div>
-                  <div class="node node-db">
+                  <div class="mini-node mini-node-db">
                     <span></span>
                     <strong>Ledger DB</strong>
                     <small>data.sql</small>
                   </div>
-                  <svg class="flow-lines" viewBox="0 0 760 420" aria-hidden="true">
-                    <path d="M120 128 C210 128 230 128 315 128" />
-                    <path d="M410 147 C470 190 470 250 540 274" />
-                    <path d="M410 120 C520 82 560 76 645 88" />
-                    <path d="M555 292 C515 340 435 352 355 338" />
-                  </svg>
-                  <div class="analysis-card">
-                    <span>Analysis score</span>
-                    <strong>82</strong>
-                    <small>3 risks to review</small>
+                  <span class="mini-line mini-line-a"></span>
+                  <span class="mini-line mini-line-b"></span>
+                  <span class="mini-line mini-line-c"></span>
+                  <span class="mini-line mini-line-d"></span>
+                </div>
+                <div class="hero-board-panel">
+                  <div>
+                    <span class="panel-label">Requirement brief</span>
+                    <strong>99.99% availability</strong>
+                    <small>1s SLA · 2k RPS · strong consistency</small>
+                  </div>
+                  <div>
+                    <span class="panel-label">Analysis score</span>
+                    <strong class="score">82</strong>
+                    <small>3 risks ready for review</small>
+                  </div>
+                  <div>
+                    <span class="panel-label">Journey</span>
+                    <strong>7 step delivery flow</strong>
+                    <small>sync call · async fanout · callback</small>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="highlights-section">
+          <div class="highlight-grid">
+            <article data-reveal>
+              <span>01</span>
+              <h3>Requirements stay with the design</h3>
+              <p>Capture use case, RPS, consistency, availability, SLA, functional requirements, and NFRs where analysis can actually use them.</p>
+            </article>
+            <article data-reveal>
+              <span>02</span>
+              <h3>AI analysis with deterministic evidence</h3>
+              <p>Run math-first checks for topology, traffic, reliability, and risk, then use enterprise-configured AI for structured review synthesis.</p>
+            </article>
+            <article data-reveal>
+              <span>03</span>
+              <h3>Versioning, reviews, and release state</h3>
+              <p>Move designs through draft, ready for review, reviewed, and live states with reviewer history attached to the right version.</p>
+            </article>
+            <article data-reveal>
+              <span>04</span>
+              <h3>Journeys explain how systems behave</h3>
+              <p>Model request flows, async events, callbacks, and operational walkthroughs so architecture is understandable without another meeting.</p>
+            </article>
+            <article data-reveal>
+              <span>05</span>
+              <h3>Enterprise catalog reduces duplicates</h3>
+              <p>Reuse canonical services and infrastructure across designs so teams can reason about shared ownership and future impact analysis.</p>
+            </article>
+            <article data-reveal>
+              <span>06</span>
+              <h3>Self-hosted enterprise control</h3>
+              <p>Keep architecture data inside your environment with admin-managed users, access control, SSO direction, storage, and AI provider setup.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="preview" class="preview-section section-band">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Product surface</p>
+            <h2>The important architecture context stays together.</h2>
+            <p>
+              Stratum is built around the full design lifecycle: capture requirements, model the system, explain flows,
+              review versions, and analyze risk without scattering context across tools.
+            </p>
+          </div>
+          <div class="surface-grid">
+            <article class="surface-card" data-reveal>
+              <span>Requirements</span>
+              <h3>Briefs that analysis can read</h3>
+              <p>Use case, RPS, SLA, availability, consistency, functional requirements, and NFRs stay attached to the design.</p>
+            </article>
+            <article class="surface-card" data-reveal>
+              <span>Canvas</span>
+              <h3>Structured system modeling</h3>
+              <p>Components, cloud frames, linked designs, typed dependencies, and shared catalog references form a machine-readable architecture model.</p>
+            </article>
+            <article class="surface-card" data-reveal>
+              <span>Journeys</span>
+              <h3>Explain traffic and behavior</h3>
+              <p>Capture request direction, async events, callbacks, failure paths, and walkthroughs for reviewers and new team members.</p>
+            </article>
+            <article class="surface-card" data-reveal>
+              <span>Reviews</span>
+              <h3>Version lifecycle with accountability</h3>
+              <p>Move versions from draft to review to live, assign reviewers, and keep comments tied to the correct design state.</p>
+            </article>
+            <article class="surface-card" data-reveal>
+              <span>AI Analysis</span>
+              <h3>Math first, AI second</h3>
+              <p>Run deterministic topology and reliability checks before AI produces structured risks, tradeoffs, and recommendations.</p>
+            </article>
+            <article class="surface-card" data-reveal>
+              <span>Enterprise</span>
+              <h3>Catalog, ACL, and admin controls</h3>
+              <p>Reuse canonical services, manage access, configure storage, connect SSO, and centrally control AI provider settings.</p>
+            </article>
           </div>
         </section>
 
@@ -127,7 +220,7 @@
             <article data-reveal>
               <span class="card-index">02</span>
               <h3>Reviews lack structure</h3>
-              <p>Architecture feedback often happens without version state, assigned reviewers, or a clear record of what was approved.</p>
+              <p>Architecture reviews often happen without version state, assigned reviewers, or a clear record of what was approved.</p>
             </article>
             <article data-reveal>
               <span class="card-index">03</span>
@@ -260,18 +353,6 @@
           </div>
         </section>
 
-        <section id="github" class="github-section">
-          <div class="feedback-card" data-reveal>
-            <p class="eyebrow">Public feedback path</p>
-            <h2>Feedback will be collected through GitHub.</h2>
-            <p>
-              When this microsite is split into its own public repository, product feedback, setup questions, review
-              notes, and deployment requests will be tracked through GitHub Issues and Discussions. Until then, this
-              page is the public product narrative and setup guide surface for Stratum.
-            </p>
-            <a class="primary-button" href="#self-hosted">Review setup model</a>
-          </div>
-        </section>
       </main>
 
       <footer class="site-footer">

@@ -17,7 +17,6 @@ The product is planned to be free to host through published Docker images and bi
 | Self-hosted runtime | Planned | Docker image and binary distribution path |
 | Public source code | Not planned | Product code remains private for now |
 | Public docs site | In progress | This folder will later become a standalone GitHub Pages repo |
-| Feedback path | GitHub | Issues and Discussions when the public docs repo is opened |
 
 ## What Stratum Solves
 
@@ -48,6 +47,7 @@ flowchart LR
 
 | Feature | What it enables |
 | --- | --- |
+| Requirements brief | Capture use case, RPS, consistency, availability, SLA, functional requirements, and NFRs where analysis can use them. |
 | Structured canvas | Model services, data stores, queues, clients, cloud frames, linked designs, and shared enterprise assets. |
 | Journeys | Explain synchronous calls, async flows, callbacks, and user or system request paths. |
 | Docs | Keep design documentation beside the architecture model. |
@@ -56,8 +56,23 @@ flowchart LR
 | Enterprise catalog | Reuse canonical services and infrastructure across designs to reduce duplicate architecture assets. |
 | Access control | Manage workspace and design-level permissions with users and groups. |
 | Admin console | Configure users, sign-in, SSO, storage, AI, integrations, and platform settings. |
-| Analysis engine | Run deterministic checks first, then optional AI synthesis when configured. |
+| Analysis engine | Run deterministic topology, traffic, reliability, and risk checks first, then optional AI synthesis when configured. |
 | Self-hosted deployment | Keep architecture data inside the organization. |
+
+## Product Surfaces
+
+The public site avoids depending on raw application screenshots as the main marketing asset. Product UI will keep changing, and narrow development screenshots do not always present well on a polished landing page.
+
+Instead, the site explains the main surfaces that Stratum brings together:
+
+| Surface | Purpose |
+| --- | --- |
+| Requirements | Capture use case, traffic, consistency, availability, SLA, FRs, and NFRs. |
+| Canvas | Model components, dependencies, cloud boundaries, linked designs, and shared assets. |
+| Journeys | Explain request paths, async flows, callbacks, failure paths, and walkthroughs. |
+| Reviews | Track reviewer participation, comments, and version state. |
+| AI analysis | Combine deterministic checks with enterprise-configured AI synthesis. |
+| Admin controls | Manage users, ACLs, SSO, storage, catalog governance, and integrations. |
 
 ## Product Model
 
@@ -299,18 +314,6 @@ Then open:
 ```text
 http://127.0.0.1:8088
 ```
-
-## Feedback
-
-When this folder becomes a standalone public repository, feedback will be collected through GitHub Issues and Discussions.
-
-Useful feedback includes:
-
-- What would make Stratum deployable in your organization?
-- Which setup guide needs more detail?
-- Which enterprise control is missing?
-- Which design review workflow feels incomplete?
-- Which feature would make Stratum meaningfully better than a generic whiteboard?
 
 ## Watermark
 
