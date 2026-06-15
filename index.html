@@ -341,14 +341,14 @@
                 <span></span><span></span><span></span>
               </div>
               <code>
-                docker run -p 8080:8080 chaosphere/stratum<br />
-                stratum --storage postgres --self-hosted<br />
+                docker run --rm -p 8080:8080 \<br />
+                &nbsp;&nbsp;ghcr.io/chaosphere-apps/stratum-allinone:latest<br />
                 open http://localhost:8080
               </code>
             </div>
             <p>
-              Packaging details are subject to release planning. The intent is simple deployment, private data ownership,
-              and enterprise-controlled configuration.
+              Start with the all-in-one image for evaluation, then connect PostgreSQL when you need persistent
+              workspaces, versions, reviews, users, and configuration.
             </p>
           </div>
         </section>

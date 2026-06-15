@@ -1,211 +1,201 @@
 # Stratum
 
-Stratum is a self-hosted system design workspace for enterprise teams.
+**Design, explain, review, version, and evaluate system architecture in one self-hosted workspace.**
 
-It brings architecture diagrams, requirements, journeys, documentation, reviews, versions, access control, and structured evaluation into one place so system knowledge does not get scattered across whiteboards, documents, tickets, meetings, and chat threads.
+Stratum is built for engineering teams that need architecture context to survive beyond whiteboard sessions, design reviews, incident retrospectives, and scattered documentation.
 
-> Stratum is designed for teams that need architecture context to stay useful after the design review is over.
+Public product page: [chaosphere-apps.github.io/about-stratum](https://chaosphere-apps.github.io/about-stratum/)
 
-## Current Distribution Plan
+---
 
-Stratum product source code is not planned for public release at this stage.
+## Why Stratum Exists
 
-The product is planned to be free to host through published Docker images and binaries. This `about-stratum` site exists so teams can understand the product, evaluate the deployment model, and follow setup guidance without requiring source access.
+System design work is usually split across too many places:
 
-| Area | Status | Notes |
-| --- | --- | --- |
-| Self-hosted runtime | Planned | Docker image and binary distribution path |
-| Public source code | Not planned | Product code remains private for now |
-| Public docs site | In progress | This folder will later become a standalone GitHub Pages repo |
+| What teams need | Where it often ends up |
+| --- | --- |
+| Architecture diagrams | Whiteboards or drawing tools |
+| Requirements and assumptions | Docs, tickets, chats, or meeting notes |
+| Request flows | Explained verbally, then forgotten |
+| Reviews and approvals | Comments scattered across tools |
+| Versions and release state | Informal screenshots or duplicated diagrams |
+| Shared services | Redrawn repeatedly with inconsistent names |
+| Risk analysis | Manual, late, or disconnected from the actual model |
 
-## What Stratum Solves
-
-Most architecture knowledge is split across tools:
-
-- Diagrams explain structure but not intent.
-- Requirements are written separately from the design.
-- Request flows are explained in meetings and then forgotten.
-- Reviews happen in chat or ticket comments without clear version state.
-- Security, availability, consistency, and traffic assumptions are reviewed too late.
-- Shared enterprise systems are repeatedly redrawn instead of reused as canonical assets.
-
-Stratum treats the design as a living system model.
+Stratum turns architecture design into a structured, reviewable, versioned system model.
 
 ```mermaid
 flowchart LR
-  Requirements["Requirements and NFRs"] --> Design["Structured design canvas"]
-  Design --> Journeys["Journeys and request flows"]
-  Design --> Docs["Design docs"]
-  Design --> Review["Reviews and comments"]
-  Journeys --> Review
-  Docs --> Review
+  Requirements["Requirements and NFRs"] --> Canvas["Structured design canvas"]
+  Canvas --> Journeys["Journeys and request flows"]
+  Canvas --> Docs["Design documentation"]
+  Canvas --> Review["Reviews and comments"]
   Review --> Versions["Version lifecycle"]
-  Versions --> Analysis["Math plus AI evaluation"]
+  Versions --> Analysis["Math plus AI analysis"]
+  Canvas --> Catalog["Enterprise catalog"]
 ```
 
-## Core Features
+---
 
-| Feature | What it enables |
-| --- | --- |
-| Requirements brief | Capture use case, RPS, consistency, availability, SLA, functional requirements, and NFRs where analysis can use them. |
-| Structured canvas | Model services, data stores, queues, clients, cloud frames, linked designs, and shared enterprise assets. |
-| Journeys | Explain synchronous calls, async flows, callbacks, and user or system request paths. |
-| Docs | Keep design documentation beside the architecture model. |
-| Version lifecycle | Move versions through draft, review, reviewed, and live states. |
-| Review workflow | Request reviews, track reviewer status, and keep comments tied to the design. |
-| Enterprise catalog | Reuse canonical services and infrastructure across designs to reduce duplicate architecture assets. |
-| Access control | Manage workspace and design-level permissions with users and groups. |
-| Admin console | Configure users, sign-in, SSO, storage, AI, integrations, and platform settings. |
-| Analysis engine | Run deterministic topology, traffic, reliability, and risk checks first, then optional AI synthesis when configured. |
-| Self-hosted deployment | Keep architecture data inside the organization. |
+## What You Get
 
-## Product Surfaces
+### Structured System Design Canvas
 
-The public site avoids depending on raw application screenshots as the main marketing asset. Product UI will keep changing, and narrow development screenshots do not always present well on a polished landing page.
+Create architecture diagrams using system-aware components such as services, APIs, queues, databases, object stores, clients, cloud frames, security controls, observability components, and linked designs.
 
-Instead, the site explains the main surfaces that Stratum brings together:
+Unlike a generic drawing canvas, Stratum keeps the model structured so it can later be searched, reviewed, versioned, analyzed, and exported.
 
-| Surface | Purpose |
-| --- | --- |
-| Requirements | Capture use case, traffic, consistency, availability, SLA, FRs, and NFRs. |
-| Canvas | Model components, dependencies, cloud boundaries, linked designs, and shared assets. |
-| Journeys | Explain request paths, async flows, callbacks, failure paths, and walkthroughs. |
-| Reviews | Track reviewer participation, comments, and version state. |
-| AI analysis | Combine deterministic checks with enterprise-configured AI synthesis. |
-| Admin controls | Manage users, ACLs, SSO, storage, catalog governance, and integrations. |
+### Requirements Next To The Design
 
-## Product Model
+Capture the design brief where it belongs:
 
-Stratum is organized around four primary concepts:
+- use case
+- functional requirements
+- non-functional requirements
+- target RPS
+- consistency expectations
+- availability target
+- SLA
+- assumptions and constraints
 
-| Concept | Description |
-| --- | --- |
-| Workspace | A team, platform, domain, or program boundary. |
-| Design | A structured architecture model inside a workspace. |
-| Version | A saved design state with lifecycle status. |
-| Journey | A guided traversal that explains how a request or event moves through the design. |
+This matters because architecture analysis without requirements is mostly guesswork.
 
-## Setup Guides
+### Journeys And Request Flows
 
-The detailed guides below describe the intended configuration model. Exact image names, binary names, and final environment variable names may change before public distribution.
+Explain how a request, event, callback, async workflow, or failure path moves through the system.
 
-<details>
-<summary><strong>Run in stateless mode</strong></summary>
+Journeys help reviewers understand the design without needing a live walkthrough every time.
 
-Stateless mode is for trials, demos, and quick internal evaluation.
+### Documentation Beside The Model
 
-In stateless mode, Stratum runs without a database. Data is kept in process memory or cache-backed storage depending on the runtime configuration.
+Attach design documentation directly to the system workspace so diagrams and explanation evolve together.
 
-Recommended for:
+### Manual Versions And Review Lifecycle
 
-- First-time product evaluation.
-- Short-lived demos.
-- Local experiments.
-- Internal proof-of-concept sessions.
+Stratum is designed around an explicit lifecycle:
 
-Important behavior:
+```mermaid
+stateDiagram-v2
+  [*] --> Draft
+  Draft --> PendingReview: Ready for review
+  PendingReview --> Reviewed: Review complete
+  Reviewed --> Live: Mark live
+  Live --> Draft: New changes
+```
 
-- Designs and changes may not survive process restart.
-- A persistent warning banner should remain visible in the app.
-- Admin setup can still be completed for the running instance.
-- Migration to a database-backed mode should be supported when persistent storage is configured.
+Only reviewed versions should become live. Older versions can be viewed without editing the current design.
 
-Example preview command:
+### Reviews And Comments
+
+Request reviews from selected reviewers, capture comments, and keep review state tied to a design version.
+
+### Enterprise Catalog
+
+Register canonical services, infrastructure, platforms, and shared assets in an enterprise catalog. Designs can reference those shared assets instead of recreating duplicate components with slightly different names.
+
+This helps teams reason about reuse and future impact analysis.
+
+### Analysis Engine
+
+Stratum is designed to combine:
+
+- deterministic checks for topology, traffic, consistency, availability, reliability, security, and operational signals
+- optional enterprise-configured AI synthesis for richer review feedback
+
+The product controls the analysis workflow. The enterprise controls the AI provider and credentials.
+
+### Enterprise Administration
+
+Admin surfaces are planned around real enterprise needs:
+
+- local users and roles
+- password reset links for local accounts
+- SSO/OIDC configuration
+- Okta group claim mapping
+- workspace and design ACLs
+- user and group grants
+- storage mode
+- AI provider configuration
+- MCP readiness
+- catalog governance
+
+---
+
+## How To Get Started
+
+Stratum is intended to be self-hosted. The product source code is not planned for public release at this stage, but Docker images and binaries are intended to make Stratum easy to run inside your environment.
+
+### Option 1: Try The All-In-One Container
+
+Use this when you want the simplest first run. The all-in-one image serves both the UI and backend from one container.
 
 ```bash
-docker run -p 8080:8080 chaosphere/stratum
+docker run --rm \
+  -p 8080:8080 \
+  ghcr.io/chaosphere-apps/stratum-allinone:latest
 ```
 
-</details>
+Then open:
 
-<details>
-<summary><strong>Configure PostgreSQL storage</strong></summary>
+```text
+http://localhost:8080
+```
 
-PostgreSQL mode is the recommended production mode.
+If no database is configured, Stratum runs in stateless mode.
 
-Recommended for:
+### Option 2: Run With PostgreSQL
 
-- Persistent workspaces and designs.
-- Enterprise user management.
-- Version and review history.
-- Audit-oriented deployments.
-- Long-running team usage.
-
-Expected setup flow:
-
-1. Open the Admin Console.
-2. Go to storage settings.
-3. Enter the PostgreSQL connection string.
-4. Test the database connection.
-5. Apply the storage configuration.
-6. Optionally migrate users and configuration from stateless mode.
-
-Example configuration shape:
+Use this for persistent workspaces, designs, versions, reviews, users, and configuration.
 
 ```bash
-STRATUM_STORAGE=postgres
-STRATUM_DATABASE_URL=postgres://stratum:change-me@postgres:5432/stratum
+docker run --rm \
+  -p 8080:8080 \
+  -e DATABASE_URL="postgres://stratum:change-me@postgres:5432/stratum?sslmode=disable" \
+  ghcr.io/chaosphere-apps/stratum-allinone:latest
 ```
 
-Operational notes:
+For production, use managed PostgreSQL or a dedicated Postgres container with persistent volumes and backups.
 
-- Use a dedicated database user.
-- Store credentials in the deployment secret manager.
-- Use managed PostgreSQL where available.
-- Enable backups before production use.
-- Keep database migrations part of the deployment process.
+### Option 3: Run UI And Backend Separately
 
-</details>
+Use this when your deployment platform prefers independent services.
 
-<details>
-<summary><strong>Configure AI evaluation</strong></summary>
+```bash
+docker pull ghcr.io/chaosphere-apps/stratum-ui:latest
+docker pull ghcr.io/chaosphere-apps/stratum-backend:latest
+```
 
-AI evaluation is centrally managed from the Admin Console.
+The UI can be served independently while the backend handles API, WebSocket, analysis, auth, storage, and administration.
 
-Stratum should always run deterministic checks first. AI is an optional synthesis layer that can review the structured design, requirements, topology, traffic assumptions, consistency choices, availability targets, and security posture.
+---
 
-Expected setup flow:
+## Deployment Modes
 
-1. Open the Admin Console.
-2. Go to AI suite.
-3. Enable AI analysis.
-4. Select the provider.
-5. Configure model, base URL, and API key.
-6. Test the provider connection.
-7. Save the configuration.
+| Mode | Best for | Persistence |
+| --- | --- | --- |
+| Stateless mode | trials, demos, short evaluations | not guaranteed after restart |
+| PostgreSQL mode | team usage and production | persistent |
+| All-in-one image | simple self-hosted deployment | depends on configured storage |
+| Split UI/backend | platform teams and larger deployments | depends on backend storage |
 
-Design principle:
+If Stratum is running without a database, the app should show a clear stateless-mode banner so teams know changes may not survive restart.
 
-- The product controls the analysis prompt.
-- The enterprise controls the provider and credentials.
-- API keys should be stored in backend configuration, never browser local storage.
-- AI output should be returned as structured findings that are safe for UI rendering.
+---
 
-</details>
-
-<details>
-<summary><strong>Configure Okta and SSO</strong></summary>
+## SSO And Okta
 
 Stratum is designed to support local sign-in and enterprise SSO.
 
-For Okta-style OIDC configuration, the Admin Console should capture:
+For Okta/OIDC-style setup, administrators configure:
 
-- Issuer URL.
-- Client ID.
-- Client secret.
-- Sign-in redirect URI.
-- Sign-out redirect URI.
-- OIDC scopes.
-- Groups claim.
-- Admin group mapping.
-- Reviewer or architect group mapping.
-
-Expected behavior:
-
-- When SSO is enabled, user passwords are managed by the identity provider.
-- Local password reset actions should be disabled for SSO-managed users.
-- Groups from OIDC claims can map into Stratum groups.
-- ACLs can grant workspace or design access to users or groups.
+- issuer URL
+- client ID
+- client secret
+- sign-in redirect URI
+- sign-out redirect URI
+- scopes
+- groups claim
+- admin/reviewer/architect group mapping
 
 Recommended scopes:
 
@@ -213,108 +203,69 @@ Recommended scopes:
 openid profile email groups
 ```
 
-</details>
+When SSO is enabled, passwords are managed by the identity provider and local password reset actions should be disabled for SSO-managed users.
 
-<details>
-<summary><strong>Use the Admin Console</strong></summary>
+---
 
-The Admin Console is the enterprise command surface for Stratum.
+## AI Analysis
 
-Planned sections:
+AI is optional and centrally configured.
 
-| Section | Purpose |
-| --- | --- |
-| Dashboard | Deployment health, setup progress, and operational state. |
-| Users and roles | Local users, roles, password reset links, and account status. |
-| Access center | Workspace and design ACLs for users and groups. |
-| Workspaces | Workspace ownership, deletion policy, and design creation controls. |
-| Enterprise catalog | Shared services and infrastructure reused across designs. |
-| Sign-in and SSO | Local sign-in, Okta/OIDC, claims, and provisioning settings. |
-| AI suite | Central model provider for analysis, vision, and future AI workflows. |
-| Integrations | MCP readiness and future integration endpoints. |
-| Security and audit | Policy posture, audit readiness, and security controls. |
-| System settings | Storage mode, deployment defaults, and platform-level configuration. |
+Stratum should first run deterministic checks, then use the configured model to synthesize review findings from the structured design, requirements, journeys, docs, and version context.
 
-</details>
+Expected admin configuration:
 
-<details>
-<summary><strong>Use design versions and reviews</strong></summary>
+- provider
+- model
+- base URL
+- API key
+- connection test
+- analysis enabled/disabled
 
-Stratum is moving toward manual version creation.
+API keys should be stored in backend configuration, never in browser local storage.
 
-Expected lifecycle:
+---
 
-```mermaid
-stateDiagram-v2
-  [*] --> Draft
-  Draft --> PendingReview: Ready for review
-  PendingReview --> Reviewed: All required reviewers complete
-  Reviewed --> Live: Mark live
-  Live --> Draft: New changes
-```
+## Who Stratum Is For
 
-Rules:
+Stratum is a fit for teams that:
 
-- A new version starts as draft.
-- A version can be marked ready for review only after reviewers are selected.
-- Reviewers should have per-version review state.
-- Only reviewed versions should be eligible to become live.
-- Only one version of a design can be live at a time.
-- Older versions should be viewable in read-only mode.
+- design backend systems, platforms, APIs, data flows, and distributed systems
+- need design review history
+- want architecture decisions to stay connected to diagrams
+- need reusable enterprise service catalogs
+- care about consistency, availability, traffic, security, and reliability tradeoffs
+- want self-hosted control over architecture data
+- want AI analysis without sending design context through unmanaged tools
 
-</details>
+---
 
-<details>
-<summary><strong>Use journeys and docs</strong></summary>
+## Current Product Direction
 
-Journeys explain how a system behaves.
+Stratum is focused on becoming a practical architecture workspace, not a generic whiteboard.
 
-Use journeys for:
+Near-term priorities:
 
-- Primary user request paths.
-- Async event flows.
-- Callback chains.
-- Failure paths.
-- DR or failover procedures.
-- Review walkthroughs.
+- stable and clean canvas creation
+- excellent version and review lifecycle
+- polished journeys and flow playback
+- stronger enterprise catalog usage
+- robust ACLs for workspaces and designs
+- production-grade storage configuration
+- useful deterministic plus AI analysis
 
-Docs capture deeper context:
+---
 
-- Design rationale.
-- Open questions.
-- Runbook references.
-- Data contracts.
-- Security decisions.
-- Capacity assumptions.
-- Tradeoffs and rejected options.
+## Feedback And Early Access
 
-Together, journeys and docs make architecture review repeatable without requiring the original author to explain every diagram live.
+When this public page is split into its own repository, product feedback, setup questions, reviews, and deployment requests will be handled through GitHub Issues and Discussions.
 
-</details>
+For now, use the product page as the main reference:
 
-## GitHub Pages Site
+[https://chaosphere-apps.github.io/about-stratum/](https://chaosphere-apps.github.io/about-stratum/)
 
-This folder is intentionally static and can be published directly with GitHub Pages.
+---
 
-Files:
-
-- `index.html`: single-page product site.
-- `styles.css`: visual system and responsive layout.
-- `script.js`: small progressive-enhancement interactions.
-
-Local preview:
-
-```bash
-cd about-stratum
-python3 -m http.server 8088
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8088
-```
-
-## Watermark
-
-Product belongs to Chaosphere Labs.
+<p align="center">
+  <strong>Stratum belongs to Chaosphere Labs.</strong>
+</p>
